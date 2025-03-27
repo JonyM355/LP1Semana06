@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Dynamic;
 
 namespace MyGame
 {
@@ -18,14 +19,9 @@ namespace MyGame
 
         public Enemy(string name)
         {
-            this.name = name;
+            SetName(name);
             health = 100;
             shield = 0;
-        }
-
-        public string GetName()
-        {
-            return name;
         }
 
         public void TakeDamage(float damage)
@@ -40,6 +36,34 @@ namespace MyGame
                 
                 if (health < 0) health = 0;
             }
+        }
+
+        public float GetHealth()
+        {
+            return health;
+        }
+
+        public float GetShield()
+        {
+            return shield;
+        }
+
+        public void SetName(string playerName)
+        {
+            if (playerName.Length > 8)
+            {
+                name = playerName.Substring(0, 8);
+            }
+
+            else
+            {
+                name = playerName;
+            }
+        }
+
+        public string GetName()
+        {
+            return name;
         }
     }
 }
