@@ -31,7 +31,8 @@ namespace MyRoguelike
 
         public void PrintEnemies()
         {
-            
+            Console.Write($"{int.Parse(roomList[0]).ToOrdinalWords()}: ");
+            Console.WriteLine($"{roomList[1]}");
         }
 
 
