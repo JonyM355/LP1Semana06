@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,12 +11,20 @@ namespace MyGame
         private string name;
         private float health;
         private float shield;
+        static int powerup;
+
+
 
         public Enemy(string name)
         {
-            SetName(name);
+            this.name = SetName(name);
             health = 100;
             shield = 0;
+        }
+
+        static Enemy()
+        {
+            powerup = 0;
         }
 
         public void TakeDamage(float damage)
@@ -32,17 +41,7 @@ namespace MyGame
             }
         }
 
-        public float GetHealth()
-        {
-            return health;
-        }
-
-        public float GetShield()
-        {
-            return shield;
-        }
-
-        public void SetName(string playerName)
+        public string SetName(string playerName)
         {
             if (playerName.Length > 8)
             {
@@ -53,10 +52,7 @@ namespace MyGame
             {
                 name = playerName;
             }
-        }
 
-        public string GetName()
-        {
             return name;
         }
 
@@ -64,21 +60,43 @@ namespace MyGame
         {
             if (pp == PowerUp.Health)
             {
-                health += f;
-                if (health > 100)
+                this.health += f;
+                if (this.health > 100)
                 {
-                    health = 100;
+                    this.health = 100;
                 }
             }
 
             if (pp == PowerUp.Shield)
             {
-                shield += f;
-                if (shield > 100)
+                this.shield += f;
+                if (this.shield > 100)
                 {
-                    shield = 100;
+                    this.shield = 100;
                 }
             }
+
+            powerup += 1;
+        }
+
+        public string GetName()
+        {
+            return name;
+        }
+
+        public float GetHealth()
+        {
+            return health;
+        }
+
+        public float GetShield()
+        {
+            return shield;
+        }
+
+        public static int GetPowerUp()
+        {
+            return powerup;
         }
     }
 }

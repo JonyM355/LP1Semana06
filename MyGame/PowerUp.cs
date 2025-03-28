@@ -1,8 +1,11 @@
+using System;
+
 namespace MyGame
 {
+    [Flags]
     public enum PowerUp
     {
-        Health,
-        Shield
+        Health = 1 << 0,
+        Shield = 1 << 1
     }
 }
