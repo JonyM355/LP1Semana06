@@ -2,36 +2,50 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Humanizer;
 
 namespace MyRoguelike
 {
     public class Level
     {
         private Toughness toughness;
-        private int rooms;
-        private int enemies;
+        private float rooms;
+        private float enemies;
+        private string[] roomList;
 
-        public Level()
+        public Level(float rooms, Toughness toughness)
+        {
+            this.rooms = rooms;
+            this.toughness = toughness;
+            enemies = 0;
+            roomList = new string[2];
+        }
+    
+        public string[] SetEnemyInRoom(float room, Enemy enemy)
+        {
+            roomList[0] = room.ToString();
+            roomList[1] = enemy.ToString();
+
+            return roomList;
+        }
+
+        public void PrintEnemies()
         {
             
         }
-    
-        public void SetEnemyInRoom(string[] enemy)
-        {
 
-        }
 
         public Toughness GetToughness()
         {
             return toughness;
         }
 
-        public int GetNumRooms()
+        public float GetNumRooms()
         {
             return rooms;
         }
 
-        public int GetNumEnemies()
+        public float GetNumEnemies()
         {
             return enemies;
         }
