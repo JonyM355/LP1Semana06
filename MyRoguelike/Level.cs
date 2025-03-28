@@ -7,6 +7,9 @@ namespace MyRoguelike
 {
     public class Level
     {
+        private Toughness toughness;
+        private int rooms;
+
         public Level()
         {
             
@@ -17,9 +20,14 @@ namespace MyRoguelike
 
         }
 
-        public Toughness GetToughness(Toughness toughness)
+        public Toughness GetToughness()
         {
             return toughness;
+        }
+
+        public int GetNumRooms()
+        {
+            return rooms;
         }
     }
 }
